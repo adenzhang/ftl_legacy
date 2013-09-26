@@ -24,6 +24,20 @@ namespace ftl {
         template < size_t ANOTHERSUB >
         timesec(const timesec<ANOTHERSUB> a):sec(a.sec), nsec(ANOTHERSUB == SUBSECOND?a.nsec:(double)a.nsec*ANOTHERSUB/SUBSECOND) {}
 
+        // convert to timeval
+        operator timeval () {
+            timesec<1000000>    m(*this);
+            timeval v;
+            v.tv_sec = m.sec;
+            v.tv_usec = m.nsec;
+        }
+        // convert from timeval
+        timesec(const timeval& v) {
+            sec = v.tv_sec;
+            nsec = (double)v.tv_usec*1000000/SUBSECOND;
+        }
+
+
         timesec& operator+=(const timesec& a) {
             nsec += a.nsec;
             long s = nsec/SUBSECOND;
