@@ -42,7 +42,7 @@ namespace ftl {
             nsec += a.nsec;
             long s = nsec/SUBSECOND;
             sec += a.sec + s;
-            if(s) nsec %= SUBSECOND;
+            if(s) nsec -= SUBSECOND;
             return *this;
         }
         timesec& operator-=(const timesec& y) {
