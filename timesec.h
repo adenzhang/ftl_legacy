@@ -1,3 +1,6 @@
+#ifndef FTL_TIMESEC_H_
+#define FTL_TIMESEC_H_
+
 namespace ftl {
 
     // SUBSECOND factor: 1, 10, 100, ... to 1000000000.
@@ -87,3 +90,5 @@ namespace ftl {
     typedef timesec<1>          timesecond; // second
 
 }  // namespace ftl
+
+#endif // FTL_TIMESEC_H_
