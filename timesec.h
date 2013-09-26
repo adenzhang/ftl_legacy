@@ -9,12 +9,12 @@ namespace ftl {
         timesec():sec(0), nsec(0){}
         timesec(long a) {
             sec = a/SUBSECOND;
-            nsec = a%SUBSECOND;
+            nsec = a-sec;
         }
         timesec(long s, unsigned long sub):sec(s), nsec(sub) {}
         timesec& operator =(long a) {
             sec = a/SUBSECOND;
-            nsec = a%SUBSECOND;
+            nsec = a-sec;
             return *this;
         }
         template < typename INTTYPE >
